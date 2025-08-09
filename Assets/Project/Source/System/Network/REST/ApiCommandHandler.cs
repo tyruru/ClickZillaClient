@@ -28,11 +28,11 @@ public abstract class ApiCommandHandler
         return await SendRequestAsync<TReturn>(request);
     }
     
-    protected async Task<T> PutAsync<T>(string endpoint, object data)
+    protected async Task<TReturn> PutAsync<TReturn, TRequest>(string endpoint, TRequest data)
     {
-        using var request = UnityWebRequest.Put($"{_baseUrl}/{endpoint}", JsonUtility.ToJson(data));
+        using var request = UnityWebRequest.Put($"{_baseUrl}/{endpoint}", JsonConvert.SerializeObject(data));
         request.SetRequestHeader("Content-Type", "application/json");
-        return await SendRequestAsync<T>(request);
+        return await SendRequestAsync<TReturn>(request);
     }
     
     protected async Task DeleteAsync(string endpoint)

@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyView: {fileID: 165096719}
-  _damage: 10
+  _damage: 3
 --- !u!114 &213709514
 MonoBehaviour:
   m_ObjectHideFlags: 0

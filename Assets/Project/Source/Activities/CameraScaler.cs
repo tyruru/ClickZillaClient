@@ -16,7 +16,7 @@ public class CameraScaler : MonoBehaviour
         Camera camera = GetComponent<Camera>();
         if (scale < 1f)
         {
-            camera.orthographicSize = camera.orthographicSize / scale;
+            camera.orthographicSize /=  scale;
         }
     }
 }

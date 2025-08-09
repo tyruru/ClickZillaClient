@@ -14,8 +14,7 @@ public class PlayerController : IInitializable, IDisposable
         _playerStatsModel.OnScoreChanged += _playerScoresView.UpdateScoreView;
         
         _enemyView = enemyView;
-        _enemyView.OnGiveExp += _playerStatsModel.AddExp;
-        
+        _enemyView.OnKilled += _playerStatsModel.AddExp;
     }
     
     public void Initialize()
@@ -25,6 +24,6 @@ public class PlayerController : IInitializable, IDisposable
 
     public void Dispose()
     {
-        _enemyView.OnGiveExp -= _playerStatsModel.AddExp;
+        _enemyView.OnKilled -= _playerStatsModel.AddExp;
     }
 }

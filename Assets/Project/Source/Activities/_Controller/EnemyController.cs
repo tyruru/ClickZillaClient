@@ -20,7 +20,7 @@ public class EnemyController : IDisposable, IInitializable
         _enemyView.OnDamaged += _enemyModel.Damage;
         _enemyModel.OnDead +=  SetRandomEnemy;
         _enemyModel.OnDead +=  _enemyView.Dead;
-        _enemyModel.OnAddedExp += _enemyView.GiveExp;
+        _enemyModel.OnAddedExp += _enemyView.OnEnemyKilled;
     }
     
     public void Initialize()
@@ -61,6 +61,6 @@ public class EnemyController : IDisposable, IInitializable
         _enemyView.OnDamaged -= _enemyModel.Damage;
         _enemyModel.OnDead -=  SetRandomEnemy;
         _enemyModel.OnDead -=  _enemyView.Dead;
-        _enemyModel.OnAddedExp -= _enemyView.GiveExp;
+        _enemyModel.OnAddedExp -= _enemyView.OnEnemyKilled;
     }
 }

@@ -13,7 +13,7 @@ public class EnemyView : MonoBehaviour
     [SerializeField] private ParticleSystem _hitParticles;
     
     public event Action<int> OnDamaged;
-    public event Action<int> OnGiveExp; 
+    public event Action<int> OnKilled; 
     public void Dead()
     {
         // _deadParticles?.Play();   
@@ -45,8 +45,8 @@ public class EnemyView : MonoBehaviour
         _hpText.text = currentHp + "/" + maxHp;
     }
 
-    public void GiveExp(int exp)
+    public void OnEnemyKilled(int exp)
     {
-        OnGiveExp?.Invoke(exp);
+        OnKilled?.Invoke(exp);
     }
 }

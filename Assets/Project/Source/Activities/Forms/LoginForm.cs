@@ -38,7 +38,7 @@ public class LoginForm : MonoBehaviour
             }
             
             var handler = new LoginUserCommandHandler();
-            var playerStats = await handler.Handle(new LoginUserCommand
+            var playerStats = await handler.Handle(new LoginUserCommand // mb need change to PlayerStatsDto etc. bcs now it PlayerStatsModel
             {
                 Username = login,
                 Password = password
@@ -48,11 +48,12 @@ public class LoginForm : MonoBehaviour
             {
                 Debug.Log($"Login successful for user: {playerStats.UserName}");
                 
+                _playerStatsModel.UserId = playerStats.UserId;
                 _playerStatsModel.UserName = playerStats.UserName;
                 _playerStatsModel.UserExp = playerStats.UserExp;
                 _playerStatsModel.EnemiesKilled = playerStats.EnemiesKilled;
 
-                SceneManager.LoadScene("GameScene");
+                SceneManager.LoadScene(SceneNames.GameScene);
             }
             else
                 Debug.LogError("Login failed. Please check your credentials.");
