@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RegisterForm : MonoBehaviour
@@ -36,10 +37,9 @@ public class RegisterForm : MonoBehaviour
             }
         
             var handler = new RegisterUserCommandHandler();
-            var isConfirmed = await handler.Handle(new RegisterUserCommand(username, password));
+            await handler.Handle(new RegisterUserCommand(username, password));
         
-            if(isConfirmed != null)
-                Debug.Log($"Registering user: {username}");
+            SceneManager.LoadScene(SceneNames.AuthorizeScene);
         }
         catch (Exception e)
         {

@@ -1,9 +1,9 @@
-using UnityEngine;
+
 using UnityEngine.SceneManagement;
 
-public class Bootstrap : MonoBehaviour
+public class LoadMainMenuButtonCommand : ButtonCommand
 {
-    private void Awake()
+    public override void Execute()
     {
         SceneManager.LoadScene(SceneNames.MainMenu);
     }
