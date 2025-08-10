@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbcfa46b6c0248f5995115776c923f6a, type: 3}
-  m_Name: SquareEnemy
+  m_Name: SlimeEnemy
   m_EditorClassIdentifier: 
-  <_icon>k__BackingField: {fileID: 7482667652216324306, guid: 570929abff33a46c8aa57b01ed12eaea, type: 3}
-  <_hp>k__BackingField: 15
-  <_name>k__BackingField: Square
-  <_exp>k__BackingField: 11
+  <_icon>k__BackingField: {fileID: -2413806693520163455, guid: b0aaf1566bb784338a5309dceb62897b, type: 3}
+  <_hp>k__BackingField: 10
+  <_name>k__BackingField: Slime

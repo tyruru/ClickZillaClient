@@ -7,12 +7,10 @@ public class EnemyModel
     public int CurrentHp { get; private set; }
     public int MaxHp { get; private set; }
     public string Name { get; private set; } 
-    public int Exp { get; private set; }
 
     public event Action OnChanged;
     public event Action OnDamaged;
     public event Action OnDead;
-    public event Action<int> OnAddedExp;
     public EnemyModel()
     {
         
@@ -33,7 +31,6 @@ public class EnemyModel
 
         if (CurrentHp == 0)
         {
-            OnAddedExp?.Invoke(Exp);
             OnDead?.Invoke();
         }
     }
@@ -44,7 +41,6 @@ public class EnemyModel
         MaxHp = enemyData.Hp;
         CurrentHp = MaxHp;
         Name = enemyData.Name;
-        Exp = enemyData.Exp;
 
         Debug.Log("Set new Enemy: " + Name);
         

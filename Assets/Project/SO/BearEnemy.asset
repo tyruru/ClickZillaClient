@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbcfa46b6c0248f5995115776c923f6a, type: 3}
-  m_Name: CapsuleEnemy
+  m_Name: BearEnemy
   m_EditorClassIdentifier: 
-  <_icon>k__BackingField: {fileID: -9095717837082945937, guid: 600bf2a7a746f4940be89ebb45d72381, type: 3}
-  <_hp>k__BackingField: 30
-  <_name>k__BackingField: Capsule
-  <_exp>k__BackingField: 44
+  <_icon>k__BackingField: {fileID: 7482667652216324306, guid: 570929abff33a46c8aa57b01ed12eaea, type: 3}
+  <_hp>k__BackingField: 50
+  <_name>k__BackingField: Bear

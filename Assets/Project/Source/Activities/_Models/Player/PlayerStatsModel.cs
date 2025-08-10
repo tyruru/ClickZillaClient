@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerStatsModel 
 {
-    private UpdateScoreUserCommandHandler _updateScoreUserCommandHandler;
+    private EnemyDeadCommandHandler _enemyDeadCommandHandler;
     
     public Guid UserId { get; set; }
     public string UserName { get; set; }
@@ -14,33 +14,16 @@ public class PlayerStatsModel
 
     public PlayerStatsModel()
     {
-        _updateScoreUserCommandHandler = new UpdateScoreUserCommandHandler();
+        _enemyDeadCommandHandler = new EnemyDeadCommandHandler();
     }
     
-    public async void AddExp(int exp)
+    public void SetExp(int exp)
     {
-        try
-        {
-            if (exp < 0)
-                throw new ArgumentException("Experience points cannot be negative.", nameof(exp));
-        
-            UserExp += exp;
-            EnemiesKilled++;
-            
-            OnScoreChanged?.Invoke(UserExp);
-        
-            var isUpdate =  await _updateScoreUserCommandHandler.Handle(
-                new UpdateScoreUserCommand(UserId, UserExp, EnemiesKilled));
-        
-            if(isUpdate != null)
-                Debug.Log($"Player {UserName} updated: Exp = {UserExp}, EnemiesKilled = {EnemiesKilled}");
-            else
-                Debug.LogError($"isUpdate var is false for player {UserName}.");
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"Failed to update player {UserName} stats. Error: {e.Message}");
-        }
-    }
+        if (exp < 0)
+            throw new ArgumentException("Experience points cannot be negative.", nameof(exp));
     
+        UserExp = exp;
+        
+        OnScoreChanged?.Invoke(UserExp);
+    }
 }

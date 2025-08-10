@@ -1,46 +1,41 @@
 using System;
-using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class EnemyController : IDisposable, IInitializable
+public class EnemyController : IDisposable
 {
-    private EnemyView _enemyView;
-    private EnemiesDataDefinition _enemiesDef;
-    private EnemyModel _enemyModel;
+    private readonly EnemyView _enemyView;
+    private readonly EnemyModel _enemyModel;
     
-    public EnemyController(EnemyView enemyView, EnemiesDataDefinition enemiesDef)
+    public string EnemyName => _enemyModel.Name;
+    
+    public event Action<string> OnEnemyDead;
+    
+    public EnemyController(EnemyView enemyView)
     {
         _enemyView = enemyView;
-        _enemiesDef = enemiesDef;
         _enemyModel = new EnemyModel();
         
         _enemyModel.OnChanged += ChangeEnemyView;
         _enemyModel.OnDamaged += ChangeEnemyHpView;
         _enemyView.OnDamaged += _enemyModel.Damage;
-        _enemyModel.OnDead +=  SetRandomEnemy;
-        _enemyModel.OnDead +=  _enemyView.Dead;
-        _enemyModel.OnAddedExp += _enemyView.OnEnemyKilled;
+        _enemyModel.OnDead +=  OnDead;
     }
     
-    public void Initialize()
+    public void SetEnemyData(EnemyData enemyData)
     {
-        if (!_enemiesDef.EnemyList.Any())
+        if (enemyData == null)
         {
-            Debug.LogError("No enemies available in the definition");
+            Debug.LogError("Enemy data is null");
             return;
         }
-
-        SetRandomEnemy();
+        
+        _enemyModel.SetData(enemyData);
     }
 
-    public void SetRandomEnemy()
+    private void OnDead()
     {
-        var randomIndex = Random.Range(0, _enemiesDef.EnemyList.Count());
-
-        var randomEnemyModel = _enemiesDef.EnemyList.ElementAt(randomIndex);
-        
-        _enemyModel.SetData(randomEnemyModel);
+        OnEnemyDead?.Invoke(_enemyModel.Name);
+        _enemyView.Dead();
     }
     
     private void ChangeEnemyHpView()
@@ -59,8 +54,6 @@ public class EnemyController : IDisposable, IInitializable
         _enemyModel.OnChanged -= ChangeEnemyView;
         _enemyModel.OnDamaged -= ChangeEnemyHpView;
         _enemyView.OnDamaged -= _enemyModel.Damage;
-        _enemyModel.OnDead -=  SetRandomEnemy;
-        _enemyModel.OnDead -=  _enemyView.Dead;
-        _enemyModel.OnAddedExp -= _enemyView.OnEnemyKilled;
+        _enemyModel.OnDead -=  OnDead;
     }
 }
