@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using Zenject;
 
 public class GameSceneMonoInstaller : MonoInstaller
@@ -12,9 +13,15 @@ public class GameSceneMonoInstaller : MonoInstaller
     {
         EnemyInstaller();
 
+        PlayerInstaller();
+
+        Container.BindInterfacesAndSelfTo<BattleManager>().AsSingle().NonLazy();
+    }
+
+    private void PlayerInstaller()
+    {
         Container.BindInstance(_playerScoresView).AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<PlayerController>().AsSingle();
-
     }
 
     private void EnemyInstaller()
