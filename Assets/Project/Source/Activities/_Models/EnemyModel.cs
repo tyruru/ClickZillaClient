@@ -33,8 +33,8 @@ public class EnemyModel
 
         if (CurrentHp == 0)
         {
-            OnDead?.Invoke();
             OnAddedExp?.Invoke(Exp);
+            OnDead?.Invoke();
         }
     }
     

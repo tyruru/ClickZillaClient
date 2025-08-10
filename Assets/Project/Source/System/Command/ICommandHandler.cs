@@ -6,3 +6,9 @@ public interface ICommandHandler<TCommand, TCommandResult>
 {
     Task<TCommandResult> Handle(TCommand command);
 }
+
+
+public interface ICommandHandler<TResult>
+{
+    Task<TResult> Handle();
+}
