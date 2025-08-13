@@ -46,6 +46,7 @@ public class EnemyController : IDisposable
     private void ChangeEnemyView()
     {
         _enemyView.SetSprite(_enemyModel.Icon);
+        _enemyView.SetName(_enemyModel.Name);
         _enemyView.SetHpValue(_enemyModel.CurrentHp, _enemyModel.MaxHp);
     }
 

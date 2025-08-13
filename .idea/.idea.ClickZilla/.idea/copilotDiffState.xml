@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/Assets/Project/Source/Activities/ButtonAnimation.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Assets/Project/Source/Activities/ButtonAnimation.cs" />
+              <option name="originalContent" value="using DG.Tweening;&#10;using UnityEngine;&#10;using UnityEngine.EventSystems;&#10;&#10;public class ButtonAnimation : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler&#10;{&#10;    [SerializeField] private RectTransform _target;&#10;    [SerializeField] private float _pressScale = 0.9f;&#10;    [SerializeField] private float _bounceTime = 0.1f;&#10;&#10;    private Vector3 _originalScale;&#10;    &#10;    private void Awake()&#10;    {&#10;        if (_target == null) _target = GetComponent&lt;RectTransform&gt;();&#10;        _originalScale = _target.localScale;&#10;    }&#10;&#10;    public void OnPointerDown(PointerEventData eventData)&#10;    {&#10;        _target.DOScale(_originalScale * _pressScale, _bounceTime).SetEase(Ease.OutQuad);&#10;    }&#10;&#10;    public void OnPointerUp(PointerEventData eventData)&#10;    {&#10;        _target.DOScale(_originalScale, _bounceTime).SetEase(Ease.OutBack);&#10;    }&#10;}&#10;" />
+              <option name="updatedContent" value="using DG.Tweening;&#10;using UnityEngine;&#10;using UnityEngine.EventSystems;&#10;&#10;public class ButtonAnimation : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler&#10;{&#10;    [SerializeField] private RectTransform _target;&#10;    [SerializeField] private float _pressScale = 0.9f;&#10;    [SerializeField] private float _bounceTime = 0.1f;&#10;&#10;    private Vector3 _originalScale;&#10;&#10;    private void Awake()&#10;    {&#10;        if (_target == null) _target = GetComponent&lt;RectTransform&gt;();&#10;        _originalScale = _target.localScale;&#10;    }&#10;&#10;    public void OnPointerDown(PointerEventData eventData)&#10;    {&#10;        _target.DOScale(_originalScale * _pressScale, _bounceTime).SetEase(Ease.OutQuad);&#10;    }&#10;&#10;    public void OnPointerUp(PointerEventData eventData)&#10;    {&#10;        _target.DOScale(_originalScale, _bounceTime).SetEase(Ease.OutBack);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
