@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66805f167a9e47f896967bb65a104c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 0}
+  _meshFilter: {fileID: 1497190003}
   _hpSlider: {fileID: 35168649}
   _hpText: {fileID: 2084409922}
   _nameText: {fileID: 1395657485}

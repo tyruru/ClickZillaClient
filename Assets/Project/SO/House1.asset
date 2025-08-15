@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbcfa46b6c0248f5995115776c923f6a, type: 3}
-  m_Name: SlimeEnemy
+  m_Name: House1
   m_EditorClassIdentifier: 
-  <_icon>k__BackingField: {fileID: -2413806693520163455, guid: b0aaf1566bb784338a5309dceb62897b, type: 3}
-  <_hp>k__BackingField: 10
-  <_name>k__BackingField: Slime
+  <_buildingMeshes>k__BackingField:
+  - {fileID: -4315542600374322986, guid: 25416c004a209444abc1d84d7f7ac228, type: 3}
+  - {fileID: -4315542600374322986, guid: 993287897c4ad40988564daecb503652, type: 3}
+  - {fileID: -4315542600374322986, guid: 1958ef8f1af44472fb5b994623b601a4, type: 3}
+  <_hp>k__BackingField: 50
+  <_name>k__BackingField: House1
