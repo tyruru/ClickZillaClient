@@ -10,12 +10,12 @@ public class LoginForm : MonoBehaviour
 {
     [SerializeField] private TMP_InputField _usernameInput;
     [SerializeField] private TMP_InputField _passwordInput;
-    [SerializeField] private Button _registerButton;
+    [SerializeField] private Button _loginButton;
 
     private PlayerStatsModel _playerStatsModel;
     private void Awake()
     {
-        _registerButton.onClick.AddListener(OnRegisterButtonClicked);
+        _loginButton.onClick.AddListener(OnRegisterButtonClicked);
     }
 
     [Inject]
@@ -68,6 +68,6 @@ public class LoginForm : MonoBehaviour
 
     private void OnDestroy()
     {
-        _registerButton.onClick.RemoveListener(OnRegisterButtonClicked);
+        _loginButton.onClick.RemoveListener(OnRegisterButtonClicked);
     }
 }

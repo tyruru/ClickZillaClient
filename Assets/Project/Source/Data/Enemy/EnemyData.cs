@@ -1,13 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyData", menuName = "SO/EnemyData")]
 public class EnemyData : ScriptableObject
 {
-    [field: SerializeField] private Sprite _icon { get; set; }
+    [field: SerializeField] private List<Mesh> _buildingMeshes { get; set; }
     [field: SerializeField] private int _hp { get; set; }
     [field: SerializeField] private string _name { get; set; }
     
-    public Sprite Icon => _icon;
+    public List<Mesh> BuildingMeshes => _buildingMeshes;
     public int Hp => _hp;
     public string Name => _name;
     
@@ -15,7 +16,7 @@ public class EnemyData : ScriptableObject
     {
         var instance = CreateInstance<EnemyData>();
         
-        instance._icon = _icon;
+        instance._buildingMeshes = _buildingMeshes;
         instance._hp = _hp;
         instance._name = _name;
         

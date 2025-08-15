@@ -19,6 +19,7 @@ public class EnemyController : IDisposable
         _enemyModel.OnDamaged += ChangeEnemyHpView;
         _enemyView.OnDamaged += _enemyModel.Damage;
         _enemyModel.OnDead +=  OnDead;
+        _enemyModel.OnMeshChanged += _enemyView.SetMesh;
     }
     
     public void SetEnemyData(EnemyData enemyData)
@@ -45,7 +46,8 @@ public class EnemyController : IDisposable
     
     private void ChangeEnemyView()
     {
-        _enemyView.SetSprite(_enemyModel.Icon);
+        _enemyView.SetMesh(_enemyModel.CurrentMesh);
+        _enemyView.SetName(_enemyModel.Name);
         _enemyView.SetHpValue(_enemyModel.CurrentHp, _enemyModel.MaxHp);
     }
 
@@ -55,5 +57,6 @@ public class EnemyController : IDisposable
         _enemyModel.OnDamaged -= ChangeEnemyHpView;
         _enemyView.OnDamaged -= _enemyModel.Damage;
         _enemyModel.OnDead -=  OnDead;
+        _enemyModel.OnMeshChanged -= _enemyView.SetMesh;
     }
 }

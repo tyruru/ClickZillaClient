@@ -1,13 +1,15 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class EnemyView : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer  _spriteRenderer;
+    [SerializeField] private MeshFilter  _meshFilter;
     [SerializeField] private Slider _hpSlider;
     [SerializeField] private TextMeshProUGUI _hpText;
+    [SerializeField] private TextMeshProUGUI _nameText;
     
     // [SerializeField] private ParticleSystem _deadParticles;
     [SerializeField] private ParticleSystem _hitParticles;
@@ -32,10 +34,21 @@ public class EnemyView : MonoBehaviour
         OnDamaged?.Invoke(damage);
         Instantiate(_hitParticles, transform.position, Quaternion.identity);   
     }
-    
-    public void SetSprite(Sprite sprite)
+
+    public void SetMesh(Mesh mesh)
     {
-        _spriteRenderer.sprite = sprite;
+        if (mesh == null)
+        {
+            Debug.LogError("Mesh is null");
+            return;
+        }
+        _meshFilter.sharedMesh = mesh;
+    }
+    
+    
+    public void SetName(string name)
+    {
+        _nameText.text = name;
     }
     
     public void SetHpValue(int currentHp, int maxHp)
