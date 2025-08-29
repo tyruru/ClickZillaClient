@@ -3,19 +3,13 @@ using UnityEngine;
 
 public class PlayerStatsModel 
 {
-    private EnemyDeadCommandHandler _enemyDeadCommandHandler;
-    
     public Guid UserId { get; set; }
     public string UserName { get; set; }
     public int EnemiesKilled { get; set; }
     public int UserExp { get; set; }
+    public Guid CurrentLocationId { get; set; }
     
     public event Action<int> OnScoreChanged;
-
-    public PlayerStatsModel()
-    {
-        _enemyDeadCommandHandler = new EnemyDeadCommandHandler();
-    }
     
     public void SetExp(int exp)
     {

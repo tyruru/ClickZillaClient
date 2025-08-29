@@ -52,6 +52,7 @@ public class LoginForm : MonoBehaviour
                 _playerStatsModel.UserName = playerStats.UserName;
                 _playerStatsModel.UserExp = playerStats.UserExp;
                 _playerStatsModel.EnemiesKilled = playerStats.EnemiesKilled;
+                _playerStatsModel.CurrentLocationId = playerStats.CurrentLocationId;
 
                 SceneManager.LoadScene(SceneNames.GameScene);
             }

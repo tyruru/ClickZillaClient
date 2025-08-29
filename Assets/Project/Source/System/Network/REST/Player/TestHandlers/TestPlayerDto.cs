@@ -1,16 +1,16 @@
 using Newtonsoft.Json;
-public class PlayerDto
+public class TestPlayerDto
 {
     [JsonProperty] public string UserName { get; private set; }
     [JsonProperty] public string EnemiesKilled { get; private set; }
     [JsonProperty] public int UserExp { get; private set; }
     
     [JsonConstructor]
-    public PlayerDto()
+    public TestPlayerDto()
     {
     }
     
-    public PlayerDto(string userName, int userExp, string enemiesKilled)
+    public TestPlayerDto(string userName, int userExp, string enemiesKilled)
     {
         UserName = userName;
         UserExp = userExp;

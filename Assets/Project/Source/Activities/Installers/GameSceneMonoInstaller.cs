@@ -1,21 +1,36 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using Zenject;
 
 public class GameSceneMonoInstaller : MonoInstaller
 {
     [SerializeField] private EnemyView _enemyView;
     [SerializeField] private EnemiesDataDefinition _enemiesDef;
-
+    [SerializeField] private LocationsDataDefinition _locationsDef;
+    
     [SerializeField] private PlayerScoresView _playerScoresView;
     
     public override void InstallBindings()
     {
+        EnvironmentInstaller();
+        
         EnemyInstaller();
 
         PlayerInstaller();
 
+        PopupInstaller();
         Container.BindInterfacesAndSelfTo<BattleManager>().AsSingle().NonLazy();
+        
+        Container.BindInterfacesAndSelfTo<PopupCommandFactory>().AsSingle().NonLazy();
+    }
+
+    private void PopupInstaller()
+    {
+        Container.BindInterfacesAndSelfTo<PopupManager>().AsSingle().NonLazy();
+    }
+
+    private void EnvironmentInstaller()
+    {
+        Container.BindInstance(_locationsDef).AsSingle().NonLazy();
     }
 
     private void PlayerInstaller()

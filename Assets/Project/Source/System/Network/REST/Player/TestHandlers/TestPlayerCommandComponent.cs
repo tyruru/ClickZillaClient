@@ -9,7 +9,7 @@ public class TestPlayerCommandComponent
     {
         _commandHandler = commandHandler;
     
-        PlayerDto dto = await _commandHandler.Handle(new GetTestPlayerCommand("df"));
+        TestPlayerDto dto = await _commandHandler.Handle(new GetTestPlayerCommand("df"));
         if (dto != null)
         {
             Debug.Log("Test player data fetched successfully: " + dto.ToString());
