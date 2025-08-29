@@ -38,4 +38,9 @@ public class PlayerController : IInitializable
     {
        return _playerStatsModel.UserId;
     }
+
+    public Guid GetCurrentLocationId()
+    {
+        return _playerStatsModel.CurrentLocationId;
+    }
 }
