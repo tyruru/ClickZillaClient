@@ -243,6 +243,7 @@ MonoBehaviour:
   _hpText: {fileID: 2084409922}
   _nameText: {fileID: 1395657485}
   _hitParticles: {fileID: 9201833535932414354, guid: 34814683fe8244a73a217f6a0edcae4e, type: 3}
+  _hitSound: {fileID: 11400000, guid: 9940ac23fe72841c78650bd12ebf2a76, type: 2}
 --- !u!4 &165096720
 Transform:
   m_ObjectHideFlags: 0
@@ -661,7 +662,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   m_Layer: 0
@@ -671,14 +671,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0

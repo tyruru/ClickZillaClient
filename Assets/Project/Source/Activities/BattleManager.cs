@@ -16,7 +16,7 @@ public class BattleManager : IDisposable
 
         _enemyController.OnEnemyDead += HandleEnemyKilled;
     }
-
+    
     private async void HandleEnemyKilled(string enemyName)
     {
         try

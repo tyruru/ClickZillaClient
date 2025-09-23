@@ -1,4 +1,5 @@
 using System;
+using AudioSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,9 +14,18 @@ public class EnemyView : MonoBehaviour
     
     // [SerializeField] private ParticleSystem _deadParticles;
     [SerializeField] private ParticleSystem _hitParticles;
+    [SerializeField] private SoundData _hitSound;
+
+    private SoundBuilder _soundBuilder;
     
     public event Action<int> OnDamaged;
-    public event Action<int> OnKilled; 
+    public event Action<int> OnKilled;
+
+    private void Start()
+    {
+        _soundBuilder = SoundManager.Instance.CreateSoundBuilder();
+    }
+
     public void Dead()
     {
         // _deadParticles?.Play();   
@@ -32,7 +42,8 @@ public class EnemyView : MonoBehaviour
         }
         
         OnDamaged?.Invoke(damage);
-        Instantiate(_hitParticles, transform.position, Quaternion.identity);   
+        Instantiate(_hitParticles, transform.position, Quaternion.identity);
+        _soundBuilder.WithRandomPitch().Play(_hitSound);
     }
 
     public void SetMesh(Mesh mesh)
