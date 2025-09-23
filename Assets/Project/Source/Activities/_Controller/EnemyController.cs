@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class EnemyController : IDisposable
@@ -7,7 +8,8 @@ public class EnemyController : IDisposable
     private readonly EnemyModel _enemyModel;
     
     public string EnemyName => _enemyModel.Name;
-    
+
+    public event Action OnEnemyHit;
     public event Action<string> OnEnemyDead;
     
     public EnemyController(EnemyView enemyView)
@@ -17,7 +19,7 @@ public class EnemyController : IDisposable
         
         _enemyModel.OnChanged += ChangeEnemyView;
         _enemyModel.OnDamaged += ChangeEnemyHpView;
-        _enemyView.OnDamaged += _enemyModel.Damage;
+        _enemyView.OnDamaged += OnDamaged;
         _enemyModel.OnDead +=  OnDead;
         _enemyModel.OnMeshChanged += _enemyView.SetMesh;
     }
@@ -33,6 +35,11 @@ public class EnemyController : IDisposable
         _enemyModel.SetData(enemyData);
     }
 
+    private void OnDamaged(int damage)
+    {
+        _enemyModel.Damage(damage);
+    }
+    
     private void OnDead()
     {
         OnEnemyDead?.Invoke(_enemyModel.Name);
@@ -55,7 +62,7 @@ public class EnemyController : IDisposable
     {
         _enemyModel.OnChanged -= ChangeEnemyView;
         _enemyModel.OnDamaged -= ChangeEnemyHpView;
-        _enemyView.OnDamaged -= _enemyModel.Damage;
+        _enemyView.OnDamaged -= OnDamaged;
         _enemyModel.OnDead -=  OnDead;
         _enemyModel.OnMeshChanged -= _enemyView.SetMesh;
     }

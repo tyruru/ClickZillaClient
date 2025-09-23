@@ -54,7 +54,7 @@ public class LoginForm : MonoBehaviour
                 _playerStatsModel.EnemiesKilled = playerStats.EnemiesKilled;
                 _playerStatsModel.CurrentLocationId = playerStats.CurrentLocationId;
 
-                SceneManager.LoadScene(SceneNames.GameScene);
+                SceneController.LoadAndCloseScene(SceneNames.GameScene, gameObject.scene.name);
             }
             else
                 Debug.LogError("Login failed. Please check your credentials.");

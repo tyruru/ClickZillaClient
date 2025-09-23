@@ -4,6 +4,6 @@ public class LoadRegisterSceneButtonCommand : ButtonCommand
 {
     public override void Execute()
     {
-        SceneManager.LoadScene(SceneNames.RegisterScene);
+        SceneController.LoadAndCloseScene(SceneNames.RegisterScene, gameObject.scene.name);
     }
 }
